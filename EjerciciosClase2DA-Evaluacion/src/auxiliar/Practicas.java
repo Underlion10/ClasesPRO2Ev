@@ -1,6 +1,14 @@
 package auxiliar;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
@@ -9,6 +17,7 @@ import java.util.Set;
 import modelo.Datos;
 import modelo.Equipo;
 import modelo.Estudiante;
+import modelo.Persona;
 import modelo.Profesor;
 
 public class Practicas {
@@ -18,15 +27,111 @@ public class Practicas {
 	// 2DA EVALUACION//
 
 	// MAPA
+	
+	//620430873
+	
+//	public int calcularEdad(String fechaNacimiento) {
+//		Calendar cal = Calendar.getInstance();
+//		Calendar today = Calendar.getInstance();
+//		cal.set(Integer.parseInt(fechaNacimiento.substring(4,8)), Integer.parseInt(fechaNacimiento.substring(2,4)),Integer.parseInt(fechaNacimiento.substring(0,2)));
+//		LocalDate date = LocalDate.now(); 
+//		return 0;
+//	}
+	
+	public HashMap<String,Estudiante> leerFichero() {
+		String nif = "";
+		String nombre = "";
+		String fechaNacimiento = ""; 
+		String sexo = "";
+		ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+		HashMap<String, Estudiante> mapaEstudiantes = new HashMap<String, Estudiante>();
+		try {
+			BufferedReader in = new BufferedReader(new FileReader("src/ficheros/persona.txt"));
+			while(in.ready()) {
+				String linea = in.readLine();
+				String[] partes = linea.split("-");
+				nif = partes[0];
+				nombre = partes[1];
+				fechaNacimiento = partes[2];
+				sexo = partes[3];
+				Estudiante est1 = new Estudiante(0, nif, nombre, sexo.charAt(0), null, 180, null, null);
+				estudiantes.add(est1);
+				mapaEstudiantes.put(est1.getNombre(), est1);
+			}
+			in.close();
+				
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		return mapaEstudiantes;
+	}
+	
+	public ArrayList<ArrayList<String>> probarMatrizAL(String[][] nombres){
+		ArrayList<ArrayList<String>> nombresAL = new ArrayList<ArrayList<String>>();
+		
+		for(String[] nombreC: nombres) {
+			ArrayList<String> names = new ArrayList<String>();
+			for(String nombre: nombreC) {
+				names.add(nombre);
+			}
+			
+			nombresAL.add(names);
+		}
+		
+		return nombresAL;
+	}
+	
+	public HashMap<String,Persona> realizarList(ArrayList<String> nombres){
+		HashMap<String,Persona> personasX = new HashMap<String,Persona>();
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		
+		for(String nombre: nombres) {
+			Persona persona = new Estudiante(23,"345690N",nombre,'M',null,178,null,null);
+			personas.add(persona);
+		}
+		
+		for(Iterator<Persona> iterador = personas.iterator(); iterador.hasNext();) {
+			Persona personaAct = iterador.next();
+			personasX.put(personaAct.getNombre(), personaAct);
+		}
+		
+		return personasX;
+	}
+	
+	public ArrayList<String> realizarIterator(ArrayList<Persona> personas) {
+		ArrayList<String> nombres = new ArrayList<String>();
+		for (Iterator<Persona> iterator = personas.iterator(); iterator.hasNext();) {
+			nombres.add(iterator.next().getNombre());
+		}
+		return nombres;
+	}
+	
+	public HashMap<Integer, Persona> crearMapaValores(ArrayList<Persona> personas){
+		HashMap<Integer,Persona> mapaPersonas = new HashMap<Integer, Persona>();
+		for(Persona persona: personas) {
+			mapaPersonas.put(persona.getAltura(), persona);
+		}
+		
+		return mapaPersonas;
+		//
+	}
 
 	public HashMap<String, Estudiante> introMapas() {
 		// La clave representa el nif del Estudiante.
 		HashMap<String, Estudiante> resultado = new HashMap<String, Estudiante>();
-		Estudiante est1 = new Estudiante(2, "123456789N", "Paco", 'M', null, 180, null, null);
+		Estudiante est1 = new Estudiante(2, "123456769N", "Paco", 'M', null, 180, null, null);
 		Estudiante est2 = new Estudiante(2, "123456780H", "Paco", 'M', null, 180, null, null);
 		resultado.put(est1.getNif(), est1);
-		Estudiante estMap = resultado.get("123456789N");
+		resultado.put(est2.getNif(), est2);
 		resultado.put("123456789N", new Estudiante(2, "123456789N", "Pipi", 'M', null, 180, null, null));
+		
+		Set<String> claves = resultado.keySet();
+		
+		for(String clave: claves) {
+			System.out.println(resultado.get(clave).getNombre());
+		}
 		return resultado;
 	}
 	// ArrayList

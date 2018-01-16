@@ -3,6 +3,8 @@ package principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Set;
 
 import auxiliar.Practicas;
 import examen1EV.Metodos;
@@ -39,16 +41,12 @@ public class Principal {
 
 		Estudiante estAnonimo = new Estudiante(123);
 
-		Estudiante estudiante = new Estudiante(111, "44556677G", "Rafael", 'M', LocalDate.now(), 187, estAnonimo, null);
-		Estudiante estudiante2 = new Estudiante(111, "44556674T", "Javier", 'M', LocalDate.now(), 187, estAnonimo,
-				null);
-		Estudiante estudiante3 = new Estudiante(111, "44556672X", "Marcos", 'M', LocalDate.now(), 187, estAnonimo,
-				null);
+		
 
-		Estudiante[] listaEstudiantes = { estAnonimo, estudiante, estudiante2, estudiante3 };
+		//Estudiante[] listaEstudiantes = { estAnonimo, estudiante, estudiante2, estudiante3 };
 
 		Practicas practicas = new Practicas();
-		practicas.ordenaEstudiantes(listaEstudiantes);
+		//practicas.ordenaEstudiantes(listaEstudiantes);
 
 		// new Practicas().muestraNumerosDe1A1000();
 		// practicas.muestraNumerosDe1A1000();
@@ -158,6 +156,9 @@ public class Principal {
 		//ArrayList<Integer> numeros = practicas.convierteCadenasANumeros(cadenas1);
 		
 		ArrayList<ArrayList<Integer>> arrayTrans = practicas.transArrayIntoArrayList(visitantesYear);
+		
+		HashMap<String, Estudiante> estudiantesMapa = practicas.introMapas();
+		HashMap<String,Estudiante> estudiantesLista = practicas.leerFichero();
 		
 		System.out.println("fin");
 
