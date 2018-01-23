@@ -4,100 +4,168 @@ import java.util.ArrayList;
 
 public class ValidacionPersonaje {
 	
-	public void analizarPiel(ArrayList<Personaje> personajes, String valor, boolean correcto) {
+	CreacionPersonajes cp = new CreacionPersonajes();
+	
+	public void analizarPiel(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		if(cp.personajeDef().getColorPiel() == valor.toUpperCase()) {
+			correcto = true;
+		} else {
+			correcto = false;
+		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(personaje.getColorPiel() != valor) {
+				if(cp.personajeDef().getColorPiel() != personaje.getColorPiel()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(personaje.getColorPiel() == valor) {
+				if(cp.personajeDef().getColorPiel() == personaje.getColorPiel()) {
+					personaje.setActivado(false);
+				}
+				
+			}
+		}
+	}
+	
+	public void analizarPelo(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		if(cp.personajeDef().getColorPelo() == valor.toUpperCase()) {
+			correcto = true;
+		} else {
+			correcto = false;
+		}
+		for(Personaje personaje: personajes) {
+			if(correcto == true) {
+				if(cp.personajeDef().getColorPelo() != personaje.getColorPelo()) {
+					personaje.setActivado(false);
+				}
+			} else {
+				if(cp.personajeDef().getColorPelo() == personaje.getColorPelo()) {
+					personaje.setActivado(false);
+				}
+				
+			}
+		}
+	}
+	
+	public void analizarOjos(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		if(cp.personajeDef().getColorOjos() == valor.toUpperCase()) {
+			correcto = true;
+		} else {
+			correcto = false;
+		}
+		for(Personaje personaje: personajes) {
+			if(correcto == true) {
+				if(cp.personajeDef().getColorOjos() != personaje.getColorOjos()) {
+					personaje.setActivado(false);
+				}
+			} else {
+				if(cp.personajeDef().getColorOjos() == personaje.getColorOjos()) {
+					personaje.setActivado(false);
+				}
+				
+			}
+		}
+	}
+	
+	public void analizarGorro(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		if(cp.personajeDef().getColorGorro() == valor.toUpperCase()) {
+			correcto = true;
+		} else {
+			correcto = false;
+		}
+		for(Personaje personaje: personajes) {
+			if(correcto == true) {
+				if(cp.personajeDef().getColorGorro() != personaje.getColorGorro()) {
+					personaje.setActivado(false);
+				}
+			} else {
+				if(cp.personajeDef().getColorGorro() == personaje.getColorGorro()) {
+					personaje.setActivado(false);
+				}
+				
+			}
+		}
+	}
+	
+	public void analizarGafas(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		boolean valorAb;
+		if(valor.toUpperCase() == "SÍ") {
+			valorAb = true;
+		} else {
+			valorAb = false;
+		}
+		if(cp.personajeDef().isGafas() == valorAb) {
+			correcto = true;
+		} else {
+			correcto = false;
+		}
+		for(Personaje personaje: personajes) {
+			if(correcto == true) {
+				if(cp.personajeDef().isGafas() != personaje.isGafas()) {
+					personaje.setActivado(false);
+				}
+			} else {
+				if(cp.personajeDef().isGafas() == personaje.isGafas()) {
+					personaje.setActivado(false);
+				}
+				
+			}
+		}
+	}
+	
+	public void analizarBarba(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		boolean valorAb;
+		if(valor.toUpperCase() == "SÍ") {
+			valorAb = true;
+		} else {
+			valorAb = false;
+		}
+		if(cp.personajeDef().isBarba() == valorAb) {
+			correcto = true;
+		} else {
+			correcto = false;
+		}
+		for(Personaje personaje: personajes) {
+			if(correcto == true) {
+				if(cp.personajeDef().isBarba() != personaje.isBarba()) {
+					personaje.setActivado(false);
+				}
+			} else {
+				if(cp.personajeDef().isBarba() == personaje.isBarba()) {
 					personaje.setActivado(false);
 				}
 			}
 		}
 	}
 	
-	public void analizarPelo(ArrayList<Personaje> personajes, String valor, boolean correcto) {
-		for(Personaje personaje: personajes) {
-			if(correcto == true) {
-				if(personaje.getColorPelo() != valor) {
-					personaje.setActivado(false);
-				}
-			} else {
-				if(personaje.getColorPelo() == valor) {
-					personaje.setActivado(false);
-				}
-			}
+	public void analizarPendientes(ArrayList<Personaje> personajes, String valor) {
+		boolean correcto;
+		boolean valorAb;
+		if(valor.toUpperCase() == "SÍ") {
+			valorAb = true;
+		} else {
+			valorAb = false;
 		}
-	}
-	
-	public void analizarOjos(ArrayList<Personaje> personajes, String valor, boolean correcto) {
-		for(Personaje personaje: personajes) {
-			if(correcto == true) {
-				if(personaje.getColorOjos() != valor) {
-					personaje.setActivado(false);
-				}
-			} else {
-				if(personaje.getColorOjos() == valor) {
-					personaje.setActivado(false);
-				}
-			}
+		if(cp.personajeDef().isPendientes() == valorAb) {
+			correcto = true;
+		} else {
+			correcto = false;
 		}
-	}
-	
-	public void analizarGorro(ArrayList<Personaje> personajes, String valor, boolean correcto) {
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(personaje.getColorGorro() != valor) {
+				if(cp.personajeDef().isPendientes() != personaje.isPendientes()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(personaje.getColorGorro() == valor) {
+				if(cp.personajeDef().isPendientes() == personaje.isPendientes()) {
 					personaje.setActivado(false);
 				}
-			}
-		}
-	}
-	
-	public void analizarGafas(ArrayList<Personaje> personajes, boolean correcto) {
-		for(Personaje personaje: personajes) {
-			if(correcto == true) {
-				if(!personaje.isGafas()) {
-					personaje.setActivado(false);
-				}
-			} else {
-				if(personaje.isGafas()) {
-					personaje.setActivado(false);
-				}
-			}
-		}
-	}
-	
-	public void analizarBarba(ArrayList<Personaje> personajes, String valor, boolean correcto) {
-		for(Personaje personaje: personajes) {
-			if(correcto == true) {
-				if(personaje.getColorbarba() != valor) {
-					personaje.setActivado(false);
-				}
-			} else {
-				if(personaje.getColorbarba() == valor) {
-					personaje.setActivado(false);
-				}
-			}
-		}
-	}
-	
-	public void analizarPendientes(ArrayList<Personaje> personajes, boolean correcto) {
-		for(Personaje personaje: personajes) {
-			if(correcto == true) {
-				if(!personaje.isPendientes()) {
-					personaje.setActivado(false);
-				}
-			} else {
-				if(personaje.isPendientes()) {
-					personaje.setActivado(false);
-				}
+				
 			}
 		}
 	}

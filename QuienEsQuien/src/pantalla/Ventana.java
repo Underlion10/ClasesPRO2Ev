@@ -9,28 +9,33 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
+import Personaje.keyboard.Keyboard;
+import recursosClass.RecursosClass;
+
 public class Ventana extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 530942976231173L;
-
-	Panel panel = new Panel();
+	
 	JComboBox<String> partesParte = new JComboBox<String>();
 	ArrayList<JComboBox<String>> actuales = new ArrayList<JComboBox<String>>();
+	Keyboard teclado = new Keyboard();
 	int actualNumber = 0;
-	private String actualCategoria;
-	private String actualValor;
+	private String actualCategoria = "Gorra";
+	private String actualValor = "No";
 
 	public Ventana() {
 
-		setSize(panel.getImg().getWidth(panel), 500);
+		setSize(RecursosClass.panel.getImg().getWidth(RecursosClass.panel), 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		Container cn = getContentPane();
 		cn.setLayout(new BorderLayout());
+		cn.addKeyListener(teclado);
+		cn.setFocusable(true);
 		partesParte.addItem("--seleccionar--");
 		JComboBox<String> partes = new JComboBox<String>();
 		JComboBox<String> actual = new JComboBox<String>();
@@ -272,7 +277,7 @@ public class Ventana extends JFrame {
 			}
 		});
 		cn.add(partes, BorderLayout.NORTH);
-		cn.add(panel);
+		cn.add(RecursosClass.panel);
 	}
 
 	public String getActualCategoria() {

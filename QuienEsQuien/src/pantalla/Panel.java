@@ -66,6 +66,7 @@ public class Panel extends JPanel{
 		if(!personajes.get(11).isActivado()) {
 			g.drawImage(imgQ, 25, 20, null);
 		}
+	
 	}
 	
 	public Image getImg() {

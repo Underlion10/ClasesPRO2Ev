@@ -68,7 +68,8 @@ public class CreacionPersonajes {
 					pendientes = true;
 				}
 				
-				Personaje personajeNuevo = new Personaje(nombre, colorPiel, colorPelo, colorOjos, glasses, gorro ,colorGorro
+				Personaje personajeNuevo = new Personaje(nombre, colorPiel, colorPelo, 
+						colorOjos, glasses, gorro ,colorGorro
 						, bigote, colorbigote, barba, colorBarba, pendientes, true);
 				listaPersonajes.add(personajeNuevo);
 			}
