@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
+import Personaje.CreacionPersonajes;
+import Personaje.ValidacionPersonaje;
 import Personaje.keyboard.Keyboard;
 import recursosClass.RecursosClass;
 
@@ -21,10 +23,13 @@ public class Ventana extends JFrame {
 	
 	JComboBox<String> partesParte = new JComboBox<String>();
 	ArrayList<JComboBox<String>> actuales = new ArrayList<JComboBox<String>>();
+	CreacionPersonajes cp = new CreacionPersonajes();
+	ValidacionPersonaje vp = new ValidacionPersonaje();
+	Panel panel = new Panel();
 	Keyboard teclado = new Keyboard();
 	int actualNumber = 0;
-	private String actualCategoria = "Gorra";
-	private String actualValor = "No";
+	private String actualCategoria;
+	private String actualValor;
 
 	public Ventana() {
 
@@ -123,6 +128,7 @@ public class Ventana extends JFrame {
 								piel.setSelectedIndex(0);
 								System.out.println(actualCategoria + " " + actualValor);
 							}
+							vp.analizarPiel(cp.getListaPersonajes(), actualValor);
 						}
 					});
 					actualNumber = 1;
