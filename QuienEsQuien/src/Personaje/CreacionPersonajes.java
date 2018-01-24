@@ -16,6 +16,11 @@ public class CreacionPersonajes {
 		return personajes.get(new Random().nextInt(12));
 	}
 	
+	public ArrayList<Personaje> getFullFile(){
+		listaPersonajes = leerFichero();
+		return listaPersonajes;
+	}
+	
 	public ArrayList<Personaje> leerFichero() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/Personaje/recursos/personajes.txt"));

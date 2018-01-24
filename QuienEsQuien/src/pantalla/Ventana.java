@@ -1,21 +1,22 @@
 package pantalla;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Rectangle;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import Personaje.CreacionPersonajes;
 import Personaje.ValidacionPersonaje;
-import Personaje.keyboard.Keyboard;
-import recursosClass.RecursosClass;
 
 public class Ventana extends JFrame {
-
 	/**
 	 * 
 	 */
@@ -25,25 +26,28 @@ public class Ventana extends JFrame {
 	ArrayList<JComboBox<String>> actuales = new ArrayList<JComboBox<String>>();
 	CreacionPersonajes cp = new CreacionPersonajes();
 	ValidacionPersonaje vp = new ValidacionPersonaje();
-	Panel panel = new Panel();
-	Keyboard teclado = new Keyboard();
+	Button button = new Button();
 	int actualNumber = 0;
 	private String actualCategoria;
 	private String actualValor;
+	Panel panel = new Panel();
 
 	public Ventana() {
 
-		setSize(RecursosClass.panel.getImg().getWidth(RecursosClass.panel), 500);
+		setSize(panel.getImg().getWidth(panel), 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		Container cn = getContentPane();
 		cn.setLayout(new BorderLayout());
-		cn.addKeyListener(teclado);
 		cn.setFocusable(true);
+		panel.setBounds(new Rectangle(25, 25, 600, 450));
+		button.setLabel("Preguntar");
+		button.setBounds(0, 0, 40, 10);
 		partesParte.addItem("--seleccionar--");
 		JComboBox<String> partes = new JComboBox<String>();
-		JComboBox<String> actual = new JComboBox<String>();
+		cn.add(partes, BorderLayout.NORTH);
+		cn.add(panel, BorderLayout.CENTER);
 		// Pendiente
 		JComboBox<String> pendiente = new JComboBox<String>();
 		pendiente.addItem("--seleccionar--");
@@ -91,7 +95,6 @@ public class Ventana extends JFrame {
 		actuales.add(piel);
 		actuales.add(gorra);
 		// end adding
-		actual.addItem("--seleccionar categoria--");
 		partes.addItem("--seleccionar--");
 		partes.addItem("Color de Piel");
 		partes.addItem("Color de Pelo");
@@ -106,7 +109,7 @@ public class Ventana extends JFrame {
 				String a = (String) e.getItem();
 
 				if (a == "Color de Piel" && e.getStateChange() == 1) {
-					cn.add(piel, BorderLayout.AFTER_LAST_LINE);
+					cn.add(piel, BorderLayout.SOUTH);
 					actualCategoria = "piel";
 					cn.remove(gorra);
 					cn.remove(pelo);
@@ -119,16 +122,15 @@ public class Ventana extends JFrame {
 						public void itemStateChanged(ItemEvent e) {
 							String a = (String) e.getItem();
 							if(a == "Negro" && e.getStateChange() == 1) {
-								actualValor = "Negro";
-								piel.setSelectedIndex(0);
+								actualValor = "MARRON";
 								System.out.println(actualCategoria + " " + actualValor);
+								vp.analizarPiel(cp.getListaPersonajes(), actualValor);
 							}
 							if(a == "Blanco" && e.getStateChange() == 1) {
-								actualValor = "Blanco";
-								piel.setSelectedIndex(0);
+								actualValor = "BLANCO";
 								System.out.println(actualCategoria + " " + actualValor);
+								vp.analizarPiel(cp.getListaPersonajes(), actualValor);
 							}
-							vp.analizarPiel(cp.getListaPersonajes(), actualValor);
 						}
 					});
 					actualNumber = 1;
@@ -136,7 +138,7 @@ public class Ventana extends JFrame {
 
 				if (a == "Gorra" && e.getStateChange() == 1) {
 					actualCategoria = "gorra";
-					cn.add(gorra, BorderLayout.AFTER_LAST_LINE);
+					cn.add(gorra, BorderLayout.SOUTH);
 					gorra.addItemListener(new ItemListener() {
 						@Override
 						public void itemStateChanged(ItemEvent e) {
@@ -163,7 +165,7 @@ public class Ventana extends JFrame {
 
 				if (a == "Color de Pelo" && e.getStateChange() == 1) {
 					actualCategoria = "pelo";
-					cn.add(pelo, BorderLayout.AFTER_LAST_LINE);
+					cn.add(pelo, BorderLayout.SOUTH);
 					pelo.addItemListener(new ItemListener() {
 						@Override
 						public void itemStateChanged(ItemEvent e) {
@@ -199,7 +201,7 @@ public class Ventana extends JFrame {
 				}
 
 				if (a == "Color de Ojos" && e.getStateChange() == 1) {
-					cn.add(ojos, BorderLayout.AFTER_LAST_LINE);
+					cn.add(ojos, BorderLayout.SOUTH);
 					actualCategoria = "ojos";
 					ojos.addItemListener(new ItemListener() {
 						@Override
@@ -226,7 +228,7 @@ public class Ventana extends JFrame {
 				}
 
 				if (a == "Gafas" && e.getStateChange() == 1) {
-					cn.add(gafas, BorderLayout.AFTER_LAST_LINE);
+					cn.add(gafas, BorderLayout.SOUTH);
 					actualCategoria = "gafas";
 					gafas.addItemListener(new ItemListener() {
 						@Override
@@ -270,7 +272,7 @@ public class Ventana extends JFrame {
 							}
 						}
 					});
-					cn.add(pendiente, BorderLayout.AFTER_LAST_LINE);
+					cn.add(pendiente, BorderLayout.SOUTH);
 					cn.remove(piel);
 					cn.remove(pelo);
 					cn.remove(gafas);
@@ -278,12 +280,10 @@ public class Ventana extends JFrame {
 					cn.remove(ojos);
 					actualNumber = 6;
 				}
-				System.out.println(actualNumber);
 				cn.validate();
+				System.out.println(actualNumber);
 			}
 		});
-		cn.add(partes, BorderLayout.NORTH);
-		cn.add(RecursosClass.panel);
 	}
 
 	public String getActualCategoria() {

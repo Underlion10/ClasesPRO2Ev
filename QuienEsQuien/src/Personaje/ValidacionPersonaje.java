@@ -2,45 +2,49 @@ package Personaje;
 
 import java.util.ArrayList;
 
+import recursosClass.RecursosClass;
+
 public class ValidacionPersonaje {
 	
-	CreacionPersonajes cp = new CreacionPersonajes();
 	
 	public void analizarPiel(ArrayList<Personaje> personajes, String valor) {
 		boolean correcto;
-		if(cp.personajeDef().getColorPiel() == valor.toUpperCase()) {
+		if(RecursosClass.cp.personajeDef().getColorPiel() == valor.toUpperCase()) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().getColorPiel() != personaje.getColorPiel()) {
+				if(RecursosClass.cp.personajeDef().getColorPiel() != personaje.getColorPiel()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().getColorPiel() == personaje.getColorPiel()) {
+				if(RecursosClass.cp.personajeDef().getColorPiel() == personaje.getColorPiel()) {
 					personaje.setActivado(false);
-				}
-				
+				}	
 			}
+		}
+		RecursosClass.cp.setListaPersonajes(personajes);
+		for(Personaje personaje: personajes) {
+			System.out.println(personaje.isActivado());
 		}
 	}
 	
 	public void analizarPelo(ArrayList<Personaje> personajes, String valor) {
 		boolean correcto;
-		if(cp.personajeDef().getColorPelo() == valor.toUpperCase()) {
+		if(RecursosClass.cp.personajeDef().getColorPelo() == valor.toUpperCase()) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().getColorPelo() != personaje.getColorPelo()) {
+				if(RecursosClass.cp.personajeDef().getColorPelo() != personaje.getColorPelo()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().getColorPelo() == personaje.getColorPelo()) {
+				if(RecursosClass.cp.personajeDef().getColorPelo() == personaje.getColorPelo()) {
 					personaje.setActivado(false);
 				}
 				
@@ -50,18 +54,18 @@ public class ValidacionPersonaje {
 	
 	public void analizarOjos(ArrayList<Personaje> personajes, String valor) {
 		boolean correcto;
-		if(cp.personajeDef().getColorOjos() == valor.toUpperCase()) {
+		if(RecursosClass.cp.personajeDef().getColorOjos() == valor.toUpperCase()) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().getColorOjos() != personaje.getColorOjos()) {
+				if(RecursosClass.cp.personajeDef().getColorOjos() != personaje.getColorOjos()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().getColorOjos() == personaje.getColorOjos()) {
+				if(RecursosClass.cp.personajeDef().getColorOjos() == personaje.getColorOjos()) {
 					personaje.setActivado(false);
 				}
 				
@@ -71,18 +75,18 @@ public class ValidacionPersonaje {
 	
 	public void analizarGorro(ArrayList<Personaje> personajes, String valor) {
 		boolean correcto;
-		if(cp.personajeDef().getColorGorro() == valor.toUpperCase()) {
+		if(RecursosClass.cp.personajeDef().getColorGorro() == valor.toUpperCase()) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().getColorGorro() != personaje.getColorGorro()) {
+				if(RecursosClass.cp.personajeDef().getColorGorro() != personaje.getColorGorro()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().getColorGorro() == personaje.getColorGorro()) {
+				if(RecursosClass.cp.personajeDef().getColorGorro() == personaje.getColorGorro()) {
 					personaje.setActivado(false);
 				}
 				
@@ -98,18 +102,18 @@ public class ValidacionPersonaje {
 		} else {
 			valorAb = false;
 		}
-		if(cp.personajeDef().isGafas() == valorAb) {
+		if(RecursosClass.cp.personajeDef().isGafas() == valorAb) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().isGafas() != personaje.isGafas()) {
+				if(RecursosClass.cp.personajeDef().isGafas() != personaje.isGafas()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().isGafas() == personaje.isGafas()) {
+				if(RecursosClass.cp.personajeDef().isGafas() == personaje.isGafas()) {
 					personaje.setActivado(false);
 				}
 				
@@ -125,18 +129,18 @@ public class ValidacionPersonaje {
 		} else {
 			valorAb = false;
 		}
-		if(cp.personajeDef().isBarba() == valorAb) {
+		if(RecursosClass.cp.personajeDef().isBarba() == valorAb) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().isBarba() != personaje.isBarba()) {
+				if(RecursosClass.cp.personajeDef().isBarba() != personaje.isBarba()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().isBarba() == personaje.isBarba()) {
+				if(RecursosClass.cp.personajeDef().isBarba() == personaje.isBarba()) {
 					personaje.setActivado(false);
 				}
 			}
@@ -151,18 +155,18 @@ public class ValidacionPersonaje {
 		} else {
 			valorAb = false;
 		}
-		if(cp.personajeDef().isPendientes() == valorAb) {
+		if(RecursosClass.cp.personajeDef().isPendientes() == valorAb) {
 			correcto = true;
 		} else {
 			correcto = false;
 		}
 		for(Personaje personaje: personajes) {
 			if(correcto == true) {
-				if(cp.personajeDef().isPendientes() != personaje.isPendientes()) {
+				if(RecursosClass.cp.personajeDef().isPendientes() != personaje.isPendientes()) {
 					personaje.setActivado(false);
 				}
 			} else {
-				if(cp.personajeDef().isPendientes() == personaje.isPendientes()) {
+				if(RecursosClass.cp.personajeDef().isPendientes() == personaje.isPendientes()) {
 					personaje.setActivado(false);
 				}
 				
